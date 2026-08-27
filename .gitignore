@@ -36,6 +36,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# raw design source dump (not needed for the site — see public/images for the curated copies)
+/Assets/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
