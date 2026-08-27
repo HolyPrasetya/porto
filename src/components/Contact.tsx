@@ -22,7 +22,7 @@ export default function Contact() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-4 text-muted text-lg"
         >
-          Punya project atau ide? Kirim email, aku senang ngobrol.
+          Have a question, feedback, or an opportunity you’d like to discuss? I’d love to hear from you. Feel free to send me an email, and I’ll get back to you as soon as possible..
         </motion.p>
         <motion.a
           initial={{ opacity: 0, y: 16 }}

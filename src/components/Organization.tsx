@@ -52,7 +52,7 @@ export default function Organization() {
           transition={{ duration: 0.5 }}
           className="text-accent font-semibold mb-3"
         >
-          Organization Experience
+          Experiences that shaped me beyond technical skills
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -61,7 +61,7 @@ export default function Organization() {
           transition={{ duration: 0.5, delay: 0.05 }}
           className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-12"
         >
-          Beyond the code
+          Organization Experience
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 gap-6">

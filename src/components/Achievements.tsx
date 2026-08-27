@@ -26,13 +26,6 @@ const achievements: Achievement[] = [
     image: "/images/achievements/widia.jpeg",
   },
   {
-    title: "BINUS Appreciation Day",
-    description:
-      "Invited to BINUS Appreciation Day to receive recognition for my achievements and contributions as a student.",
-    meta: "Certificate of Appreciation",
-    image: "/images/achievements/binus-appreciation-day.jpg",
-  },
-  {
     title: "POMPROV Taekwondo 2024",
     description:
       "Competed in the Pekan Olahraga Mahasiswa Provinsi (POMPROV) for Taekwondo, representing BINUS University Semarang — tested my skills in a competitive arena and strengthened my discipline and resilience.",
@@ -40,11 +33,48 @@ const achievements: Achievement[] = [
     image: "/images/achievements/pomprov.jpg",
   },
   {
+    title: "BINUS Appreciation Day 2024",
+    description:
+      "Invited to BINUS Appreciation Day to receive recognition for my achievements and contributions as a student.",
+    meta: "Certificate of Appreciation",
+    image: "/images/achievements/binus-appreciation-day.jpg",
+  },
+  {
+    title: "BINUS Appreciation Day 2026",
+    description:
+      "Selected once again for BINUS Appreciation Day 2026 in recognition of my achievements and contributions. Truly grateful and blessed to receive this recognition for the second time.",
+    meta: "Certificate of Appreciation",
+    image: "/images/achievements/appreciationday2026.jpg",
+  },
+  {
     title: "idFest 2025: Developer Day Finalist",
     description:
       "Selected as a finalist at idFest: Developer Day Road to APICTA with my team, presenting Aqualyze — a real-time IoT-based water quality monitoring system for Recirculating Aquaculture Systems.",
     meta: "4th place",
     image: "/images/achievements/idfest2025.jpg",
+  },
+  {
+    title: "APICTA Awards 2025 — International Finalist",
+    description:
+      "Selected as an international finalist to represent Indonesia at the APICTA Awards 2025 in Kaohsiung, Taiwan, where I presented Aqualyze to an international panel of judges. This experience challenged me to communicate our innovation beyond borders and compete alongside 200+ teams from across the Asia-Pacific region.",
+    meta: "International Finalist — APICTA Awards 2025",
+    // TODO: no photo/certificate provided yet for this one — drop a file in
+    // public/images/achievements/ and point this at it.
+    image: "/images/achievements/apicta-2025.jpg",
+  },
+  {
+    title: "Aqualyze — Bronze Finalist",
+    description:
+      "Recognized as a Bronze Finalist at INOVATALK, a university innovation competition held as part of the Gelar Inovasi Harmoni Nusantara 2025 by Universitas Kristen Satya Wacana (UKSW).",
+    meta: "Bronze Finalist — INOVATALK 2025",
+    image: "/images/achievements/aqualyze-inovatalk-2025.png",
+  },
+  {
+    title: "BAIM: CODE 6.0 2026 Finalist",
+    description:
+      "Selected as a Top 5 Finalist at Competition of Developer (CODE 6.0) Software Development by AMIKOM, developing BAIM — an application designed to support communication and learning for children with Autism Spectrum Disorder (ASD).",
+    meta: "Top 5 Finalist",
+    image: "/images/achievements/BAIM.jpg",
   },
   {
     title: "15 Years Journey of Taekwondo",
@@ -66,7 +96,7 @@ export default function Achievements() {
           transition={{ duration: 0.5 }}
           className="text-accent font-semibold mb-3"
         >
-          Achievements
+          Personal Milestones
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -75,7 +105,7 @@ export default function Achievements() {
           transition={{ duration: 0.5, delay: 0.05 }}
           className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-12"
         >
-          Milestones
+          Achievements & Awards
         </motion.h2>
 
         <div className="divide-y divide-white/10 border-t border-white/10">
