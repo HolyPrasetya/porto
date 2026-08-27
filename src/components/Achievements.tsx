@@ -58,9 +58,13 @@ const achievements: Achievement[] = [
     description:
       "Selected as an international finalist to represent Indonesia at the APICTA Awards 2025 in Kaohsiung, Taiwan, where I presented Aqualyze to an international panel of judges. This experience challenged me to communicate our innovation beyond borders and compete alongside 200+ teams from across the Asia-Pacific region.",
     meta: "International Finalist — APICTA Awards 2025",
-    // TODO: no photo/certificate provided yet for this one — drop a file in
-    // public/images/achievements/ and point this at it.
-    image: "/images/achievements/apicta-2025.jpg",
+    image: "/images/achievements/apicta-2025.png",
+  },
+  { title: "Aqualyze — Intellectual Property",
+    description: 
+      "Secured Copyright protection for Aqualyze, an IoT-based innovation for water quality monitoring. The registration formally recognizes the original computer program behind the solution and adds intellectual property protection to the project.", 
+    meta: "Copyright — Computer Program", 
+    image: "/images/achievements/HAKI1.png", 
   },
   {
     title: "Aqualyze — Bronze Finalist",
