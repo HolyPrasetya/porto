@@ -32,6 +32,7 @@ const projects: Project[] = [
     description:
       "A social yoga app connecting people through video calls, group management, and real-time interaction. Implemented modern iOS practices including MVVM architecture with Agora and Firebase integration.",
     image: "/images/work/Soulace.png",
+    imagePosition: "object-top",
   },
   {
     title: "Soulace — Alternate Version",
