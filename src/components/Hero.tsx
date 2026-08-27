@@ -55,7 +55,7 @@ export default function Hero() {
           </div>
           <div className="relative h-full w-full rounded-3xl overflow-hidden border border-white/10">
             <Image
-              src="/profile.jpg"
+              src="/unnamed-hero.jpg"
               alt="Ignasius Holy Prasetya"
               fill
               sizes="(min-width: 1024px) 384px, 320px"

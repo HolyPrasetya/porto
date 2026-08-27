@@ -90,7 +90,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="text-accent font-semibold mb-3"
         >
-          Projects
+          What I've Built
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 16 }}
@@ -99,7 +99,7 @@ export default function Projects() {
           transition={{ duration: 0.5, delay: 0.05 }}
           className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-12"
         >
-          Selected work
+           Projects
         </motion.h2>
 
         <div className="grid sm:grid-cols-2 gap-6">

@@ -36,6 +36,9 @@ const tools = [
   { name: "MySQL", logo: "/images/tools/mysql.png" },
   { name: "C", logo: "/images/tools/c-lang.png" },
   { name: "Unity", logo: "/images/tools/unity.png" },
+  { name: "SwiftUI", logo: "/images/tools/swiftUI.png" },
+  { name: "Xcode", logo: "/images/tools/Xcode.png" },
+  { name: "Sketch", logo: "/images/tools/sketch.webp" },
 ];
 
 const stats = [
@@ -65,30 +68,48 @@ export default function About() {
           About Me
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Hi, I&apos;m Ignasius Holy Prasetya.
-          </h2>
-          <p className="mt-6 max-w-2xl text-muted text-lg leading-relaxed">
-            People usually call me Holy. I&apos;m a 20-year-old Computer
-            Science undergraduate at Bina Nusantara University with a deep
-            passion for technology, innovation, and continuous growth. I
-            thrive in dynamic and collaborative environments, always eager
-            to contribute, learn, and adapt.
-          </p>
-          <p className="mt-4 max-w-2xl text-muted text-lg leading-relaxed">
-            With a strong foundation in software development and a
-            proactive mindset, I enjoy working on meaningful projects that
-            combine creativity and problem-solving. I actively engage in
-            organizational activities, valuing teamwork and communication
-            as key drivers of success.
-          </p>
-        </motion.div>
+        <div className="grid md:grid-cols-[1fr_minmax(0,260px)] gap-12 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+              Hi, I&apos;m Ignasius Holy Prasetya.
+            </h2>
+            <p className="mt-6 max-w-2xl text-muted text-lg leading-relaxed">
+              People usually call me Holy. I&apos;m a 20-year-old Computer
+              Science undergraduate at Bina Nusantara University with a deep
+              passion for technology, innovation, and continuous growth. I
+              thrive in dynamic and collaborative environments, always eager
+              to contribute, learn, and adapt.
+            </p>
+            <p className="mt-4 max-w-2xl text-muted text-lg leading-relaxed">
+              With a strong foundation in software development and a
+              proactive mindset, I enjoy working on meaningful projects that
+              combine creativity and problem-solving. I actively engage in
+              organizational activities, valuing teamwork and communication
+              as key drivers of success.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative aspect-[4/5] w-full max-w-[260px] mx-auto md:mx-0 rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+          >
+            <Image
+              src="/profile.jpg"
+              alt="Ignasius Holy Prasetya"
+              fill
+              sizes="260px"
+              className="object-cover"
+            />
+          </motion.div>
+        </div>
 
         {/* Stats */}
         <motion.div

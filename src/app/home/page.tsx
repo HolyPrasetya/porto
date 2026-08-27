@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Achievements from "@/components/Achievements";
+import WorkExperience from "@/components/WorkExperience";
 import Organization from "@/components/Organization";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
@@ -15,6 +16,7 @@ export default function HomePage() {
         <About />
         <Projects />
         <Achievements />
+        <WorkExperience />
         <Organization />
         <Gallery />
         <Testimonials />

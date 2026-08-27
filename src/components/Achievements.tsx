@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 type Achievement = {
@@ -60,11 +61,12 @@ const achievements: Achievement[] = [
     meta: "International Finalist — APICTA Awards 2025",
     image: "/images/achievements/apicta-2025.png",
   },
-  { title: "Aqualyze — Intellectual Property",
-    description: 
-      "Secured Copyright protection for Aqualyze, an IoT-based innovation for water quality monitoring. The registration formally recognizes the original computer program behind the solution and adds intellectual property protection to the project.", 
-    meta: "Copyright — Computer Program", 
-    image: "/images/achievements/HAKI1.png", 
+  {
+    title: "Aqualyze — Intellectual Property",
+    description:
+      "Secured Copyright protection for Aqualyze, an IoT-based innovation for water quality monitoring. The registration formally recognizes the original computer program behind the solution and adds intellectual property protection to the project.",
+    meta: "Copyright — Computer Program",
+    image: "/images/achievements/HAKI1.png",
   },
   {
     title: "Aqualyze — Bronze Finalist",
@@ -90,6 +92,8 @@ const achievements: Achievement[] = [
 ];
 
 export default function Achievements() {
+  const [lightbox, setLightbox] = useState<Achievement | null>(null);
+
   return (
     <section id="achievements" className="py-32 border-t border-white/10">
       <div className="mx-auto max-w-6xl px-6">
@@ -136,19 +140,64 @@ export default function Achievements() {
                   {item.description}
                 </p>
               </div>
-              <div className="relative aspect-[4/3] w-full sm:w-36 rounded-lg overflow-hidden border border-white/10 justify-self-start sm:justify-self-end">
+              <button
+                type="button"
+                onClick={() => setLightbox(item)}
+                aria-label={`View ${item.title} full-size`}
+                className="group relative aspect-[4/3] w-full sm:w-36 rounded-lg overflow-hidden border border-white/10 justify-self-start sm:justify-self-end cursor-zoom-in"
+              >
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
                   sizes="144px"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-              </div>
+                <span className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
+              </button>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {lightbox && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightbox(null)}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-6 cursor-zoom-out"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="relative w-full max-w-3xl aspect-[4/3]"
+            >
+              <Image
+                src={lightbox.image}
+                alt={lightbox.title}
+                fill
+                sizes="768px"
+                className="object-contain"
+              />
+            </motion.div>
+            <button
+              type="button"
+              onClick={() => setLightbox(null)}
+              aria-label="Close"
+              className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl leading-none"
+            >
+              ×
+            </button>
+            <p className="absolute bottom-6 left-1/2 -translate-x-1/2 text-sm text-white/70 text-center px-6">
+              {lightbox.title}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
