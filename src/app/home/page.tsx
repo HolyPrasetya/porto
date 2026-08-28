@@ -7,14 +7,14 @@ import Organization from "@/components/Organization";
 import Gallery from "@/components/Gallery";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
-import SpiderCompanion from "@/components/SpiderCompanion";
+// import SpiderCompanion from "@/components/SpiderCompanion";
 import ScrollHint from "@/components/ScrollHint";
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
-      <SpiderCompanion />
+      {/* <SpiderCompanion /> */}
       <ScrollHint />
       <main className="pt-16">
         <About />

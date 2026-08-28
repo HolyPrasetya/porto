@@ -21,17 +21,28 @@ export default function ScrollHint() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2 pointer-events-none"
+          className="fixed bottom-6 left-6 z-40 flex flex-col items-start gap-3 pointer-events-none"
         >
-          <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-muted">
-            Scroll to explore
-          </span>
+          <div className="flex items-center gap-3">
+            <div className="flex gap-[3px]">
+              {[0, 1, 2].map((i) => (
+                <span
+                  key={i}
+                  className="h-4 w-[3px] rounded-full bg-accent/70"
+                  style={{ opacity: 1 - i * 0.28 }}
+                />
+              ))}
+            </div>
+            <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted">
+              Scroll to explore
+            </span>
+          </div>
           <motion.svg
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
             strokeWidth="1.6"
-            className="h-4 w-4 text-muted"
+            className="h-5 w-5 text-muted ml-9"
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
           >
