@@ -99,15 +99,43 @@ export default function About() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative aspect-[4/5] w-full max-w-[260px] mx-auto md:mx-0 rounded-2xl overflow-hidden border border-white/10 bg-white/5"
+            className="w-full max-w-[260px] mx-auto md:mx-0"
           >
-            <Image
-              src="/profile.jpg"
-              alt="Ignasius Holy Prasetya"
-              fill
-              sizes="260px"
-              className="object-cover"
-            />
+            <div className="relative aspect-[4/5] w-full rounded-2xl overflow-hidden border border-white/10 bg-white/5">
+              <Image
+                src="/profile.jpg"
+                alt="Ignasius Holy Prasetya"
+                fill
+                sizes="260px"
+                className="object-cover"
+              />
+            </div>
+            <div className="mt-4 flex justify-center md:justify-start gap-3">
+              <a
+                href="https://www.instagram.com/holyprasetya_/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted hover:text-foreground hover:border-accent/50 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" className="h-5 w-5">
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ignasius-holy-prasetya"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-muted hover:text-foreground hover:border-accent/50 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5">
+                  <path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3.2 8.75h3.5V21H3.2V8.75Zm6.2 0h3.35v1.68h.05c.47-.88 1.6-1.8 3.3-1.8 3.53 0 4.18 2.32 4.18 5.34V21h-3.5v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9.4V8.75Z" />
+                </svg>
+              </a>
+            </div>
           </motion.div>
         </div>
 
