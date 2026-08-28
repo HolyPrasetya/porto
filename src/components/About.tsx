@@ -44,7 +44,7 @@ const tools = [
 const stats = [
   { value: "5+", label: "Projects completed" },
   { value: "30+", label: "TaeKwonDo competitions" },
-  { value: "3", label: "Academic competitions" },
+  { value: "5+", label: "Academic competitions" },
   { value: "1", label: "Paper publication" },
 ];
 
