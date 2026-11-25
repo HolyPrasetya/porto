@@ -1,13 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { GhostText, ParallaxImage } from "./parallax";
 
 type Project = {
   title: string;
   role: string;
   description: string;
-  image: string;
+  image?: string;
+  gradient?: string;
   imagePosition?: string;
 };
 
@@ -43,6 +44,20 @@ const projects: Project[] = [
     imagePosition: "object-top",
   },
   {
+    title: "SiJak — Digital Taekwondo Scoring",
+    role: "Product Requirements & MVP Developer",
+    description:
+      "A digital sparring scoring system. Wrote the PRD and MVP demo, translating the judging workflow into a Mac operator interface and three iPhone judge consoles connected via Multipeer Connectivity with Room ID and QR-code pairing.",
+    gradient: "from-sky-500/40 via-indigo-500/30 to-fuchsia-500/30",
+  },
+  {
+    title: "STRIDE — Motorcycle Touring",
+    role: "iOS Developer",
+    description:
+      "A touring app with real-time rider position tracking, shared navigation, voice communication and crash detection. Built with Swift, Go, MapKit, App Intents, WebRTC, and Wi-Fi Aware for offline communication.",
+    gradient: "from-orange-500/40 via-rose-500/30 to-purple-500/30",
+  },
+  {
     title: "Sync or Sink",
     role: "Individual Project",
     description:
@@ -54,8 +69,9 @@ const projects: Project[] = [
 
 export default function WorkExperience() {
   return (
-    <section id="work-experience" className="py-32 border-t border-white/10">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="work-experience" className="relative overflow-hidden py-32 border-t border-white/10">
+      <GhostText from={-10} to={14}>Work</GhostText>
+      <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,7 +106,7 @@ export default function WorkExperience() {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="mt-6 max-w-3xl text-muted text-lg leading-relaxed"
         >
-          Developed 5 iOS application projects using SwiftUI and Apple
+          Junior iOS Developer (Mar 2026 – Present). Developed 5+ iOS application projects using SwiftUI and Apple
           development frameworks, working in an Apple-style agile environment
           — daily stand-ups, weekly sprints, prototyping, testing, and
           presentations.
@@ -106,14 +122,20 @@ export default function WorkExperience() {
               transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
               className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden"
             >
-              <div className="relative aspect-video bg-white">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className={`object-cover ${project.imagePosition ?? ""}`}
-                />
+              <div className={`relative aspect-video ${project.image ? "bg-white" : "bg-gradient-to-br " + project.gradient}`}>
+                {project.image ? (
+                  <ParallaxImage
+                    src={project.image}
+                    alt={project.title}
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    strength={8}
+                    className={project.imagePosition ?? ""}
+                  />
+                ) : (
+                  <span className="absolute inset-0 flex items-center justify-center text-5xl font-black tracking-tight text-white/80">
+                    {project.title.split(" — ")[0]}
+                  </span>
+                )}
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold">{project.title}</h3>

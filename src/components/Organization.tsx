@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { GhostText, ParallaxImage } from "./parallax";
 
 type Org = {
   title: string;
@@ -43,8 +43,9 @@ const organizations: Org[] = [
 
 export default function Organization() {
   return (
-    <section id="organization" className="py-32 border-t border-white/10">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="organization" className="relative overflow-hidden py-32 border-t border-white/10">
+      <GhostText>Teams</GhostText>
+      <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -75,12 +76,10 @@ export default function Organization() {
               className="rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden"
             >
               <div className="relative aspect-video">
-                <Image
+                <ParallaxImage
                   src={org.image}
                   alt={org.title}
-                  fill
                   sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
                 />
               </div>
               <div className="p-6">

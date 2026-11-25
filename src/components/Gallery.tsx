@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { GhostText } from "./parallax";
 
 const images = [
   "/images/gallery/gallery-1.png",
@@ -16,8 +17,9 @@ const images = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="py-32 border-t border-white/10">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="gallery" className="relative overflow-hidden py-32 border-t border-white/10">
+      <GhostText>Moments</GhostText>
+      <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}

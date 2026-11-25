@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+import { GhostText, ParallaxImage } from "./parallax";
 
 type Project = {
   title: string;
@@ -81,8 +81,9 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-32 border-t border-white/10">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="projects" className="relative overflow-hidden py-32 border-t border-white/10">
+        <GhostText>Projects</GhostText>
+      <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -114,12 +115,10 @@ export default function Projects() {
               className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] overflow-hidden hover:border-accent/50 transition-colors"
             >
               <div className="relative aspect-video">
-                <Image
+                <ParallaxImage
                   src={project.image}
                   alt={project.title}
-                  fill
                   sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
                 />
               </div>
 
