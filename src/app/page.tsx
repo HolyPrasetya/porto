@@ -9,16 +9,16 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 // import SpiderCompanion from "@/components/SpiderCompanion";
 import Hero from "@/components/Hero";
-import ScrollHint from "@/components/ScrollHint";
+import { RouteLine } from "@/components/parallax";
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
       {/* <SpiderCompanion /> */}
-      <ScrollHint />
       <main>
         <Hero />
+        <RouteLine>
         <About />
         <Projects />
         <Achievements />
@@ -27,6 +27,7 @@ export default function HomePage() {
         <Gallery />
         <Testimonials />
         <Contact />
+        </RouteLine>
       </main>
     </>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GhostText, ParallaxImage } from "./parallax";
+import { ParallaxImage } from "./parallax";
 
 type Org = {
   title: string;
@@ -44,7 +44,6 @@ const organizations: Org[] = [
 export default function Organization() {
   return (
     <section id="organization" className="relative overflow-hidden py-32 border-t border-white/10">
-      <GhostText>Teams</GhostText>
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

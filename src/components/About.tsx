@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { GhostText } from "./parallax";
 
 const softSkills = [
   "Organization",
@@ -60,7 +59,6 @@ const education = [
 export default function About() {
   return (
     <section id="about" className="relative overflow-hidden py-32">
-      <GhostText>About</GhostText>
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

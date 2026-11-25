@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GhostText, ParallaxImage } from "./parallax";
+import { ParallaxImage } from "./parallax";
 
 type Project = {
   title: string;
@@ -82,7 +82,6 @@ const projects: Project[] = [
 export default function Projects() {
   return (
     <section id="projects" className="relative overflow-hidden py-32 border-t border-white/10">
-        <GhostText>Projects</GhostText>
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

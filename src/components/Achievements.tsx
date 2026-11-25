@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { GhostText } from "./parallax";
 
 type Achievement = {
   title: string;
@@ -97,7 +96,6 @@ export default function Achievements() {
 
   return (
     <section id="achievements" className="relative overflow-hidden py-32 border-t border-white/10">
-      <GhostText from={-5} to={7}>Awards</GhostText>
       <div className="relative mx-auto max-w-6xl px-6">
         <motion.p
           initial={{ opacity: 0, y: 16 }}

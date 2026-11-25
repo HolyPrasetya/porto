@@ -95,8 +95,6 @@ export function ParallaxBackdrop() {
   const k = reduce ? 0 : 1;
   const slow = useTransform(scrollYProgress, [0, 1], [0, -240 * k]);
   const mid = useTransform(scrollYProgress, [0, 1], [0, -720 * k]);
-  const fast = useTransform(scrollYProgress, [0, 1], [0, -1400 * k]);
-  const spin = useTransform(scrollYProgress, [0, 1], [0, 220 * k]);
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -113,22 +111,6 @@ export function ParallaxBackdrop() {
         style={{ y: mid }}
         className="absolute -right-48 top-[60%] h-[40rem] w-[40rem] rounded-full bg-fuchsia-500/10 blur-[140px]"
       />
-      <motion.div
-        style={{ y: fast, rotate: spin }}
-        className="absolute left-[8%] top-[120%] h-40 w-40 rounded-3xl border border-accent/30"
-      />
-      <motion.div
-        style={{ y: mid, rotate: spin }}
-        className="absolute right-[10%] top-[70%] h-24 w-24 rounded-full border border-white/10"
-      />
-      <motion.div
-        style={{ y: fast }}
-        className="absolute right-[22%] top-[150%] h-3 w-3 rounded-full bg-accent/60"
-      />
-      <motion.div
-        style={{ y: mid }}
-        className="absolute left-[30%] top-[95%] h-2 w-2 rounded-full bg-white/30"
-      />
     </div>
   );
 }
@@ -143,5 +125,28 @@ export function ScrollProgress() {
       style={{ scaleX }}
       className="fixed left-0 right-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-accent via-sky-300 to-fuchsia-400"
     />
+  );
+}
+
+/** Vertical route line on the left edge that draws itself as you read down the page. */
+export function RouteLine({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start 55%", "end 55%"],
+  });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.3 });
+  const top = useTransform(scaleY, (v) => `${v * 100}%`);
+  return (
+    <div ref={ref} className="relative">
+      <div aria-hidden className="pointer-events-none absolute bottom-0 left-4 top-0 hidden w-px bg-white/10 xl:block">
+        <motion.div style={{ scaleY }} className="h-full w-px origin-top bg-gradient-to-b from-accent to-sky-300" />
+        <motion.span
+          style={{ top }}
+          className="absolute -left-[5px] h-[11px] w-[11px] -translate-y-1/2 rounded-full bg-accent shadow-[0_0_14px_rgba(56,152,236,0.9)]"
+        />
+      </div>
+      {children}
+    </div>
   );
 }
