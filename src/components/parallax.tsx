@@ -118,7 +118,7 @@ export function ParallaxBackdrop() {
 /** Thin gradient bar at the top showing page scroll progress. */
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 30, mass: 0.3 });
+  const scaleX = useSpring(scrollYProgress, { stiffness: 220, damping: 40, mass: 0.3, restDelta: 0.0005 });
   return (
     <motion.div
       aria-hidden
@@ -133,9 +133,9 @@ export function RouteLine({ children }: { children: ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 55%", "end 55%"],
+    offset: ["start 55%", "end end"],
   });
-  const scaleY = useSpring(scrollYProgress, { stiffness: 120, damping: 28, mass: 0.3 });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 220, damping: 40, mass: 0.3, restDelta: 0.0005 });
   const top = useTransform(scaleY, (v) => `${v * 100}%`);
   return (
     <div ref={ref} className="relative">

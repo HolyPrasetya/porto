@@ -38,27 +38,6 @@ export default function Contact() {
 
       <footer className="mt-32 text-center text-sm text-muted space-y-1">
         <p>&copy; {new Date().getFullYear()} Holpras. All rights reserved.</p>
-        <p className="text-xs text-muted/70">
-          &ldquo;Spiderman Rigged&rdquo; by{" "}
-          <a
-            href="https://sketchfab.com/nitwit.friends"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground"
-          >
-            nitwit.friends
-          </a>{" "}
-          on Sketchfab, licensed under{" "}
-          <a
-            href="https://creativecommons.org/licenses/by/4.0/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-foreground"
-          >
-            CC BY 4.0
-          </a>
-          .
-        </p>
       </footer>
     </section>
   );
