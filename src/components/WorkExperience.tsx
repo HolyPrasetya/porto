@@ -46,9 +46,9 @@ const projects: Project[] = [
   },
   {
     title: "SiJak — Digital Taekwondo Scoring",
-    role: "Product Requirements & MVP Developer",
+    role: "Product Manager",
     description:
-      "A digital sparring scoring system. Wrote the PRD and MVP demo, translating the judging workflow into a Mac operator interface and three iPhone judge consoles connected via Multipeer Connectivity with Room ID and QR-code pairing.",
+      "A digital sparring scoring system. As Product Manager, I wrote the PRD and MVP demo, translating the judging workflow into a Mac operator interface and three iPhone judge consoles connected via Multipeer Connectivity with Room ID and QR-code pairing.",
     image: "/images/work/SiJak.png",
     contain: "bg-[#2a1250]",
   },
