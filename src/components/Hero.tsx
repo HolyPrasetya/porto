@@ -9,8 +9,14 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import Scene3D from "./Scene3D";
 import { ParallaxBackdrop, ScrollMarquee, ScrollProgress } from "./parallax";
+
+const chips = [
+  { label: "SwiftUI", pos: "-left-10 top-[12%]", near: true, delay: 0 },
+  { label: "ARKit", pos: "-right-8 top-[30%]", near: false, delay: 0.6 },
+  { label: "RealityKit", pos: "-left-12 bottom-[22%]", near: false, delay: 1.1 },
+  { label: "APICTA Finalist", pos: "-right-10 bottom-[8%]", near: true, delay: 0.3 },
+];
 
 const roles = [
   "iOS Developer",
@@ -31,16 +37,17 @@ export default function Hero() {
   });
 
   // Each layer travels at a different speed => depth.
-  const titleY = useTransform(p, [0, 1], [0, -260 * k]);
-  const titleScale = useTransform(p, [0, 1], [1, 1 + 0.35 * k]);
-  const titleOpacity = useTransform(p, [0.55, 0.95], [1, reduce ? 1 : 0]);
-  const subY = useTransform(p, [0, 1], [0, -120 * k]);
-  const photoY = useTransform(p, [0, 1], [0, 120 * k]);
-  const photoRotate = useTransform(p, [0, 1], [0, -4 * k]);
-  const blobY = useTransform(p, [0, 1], [0, -380 * k]);
-  const blobScale = useTransform(p, [0, 1], [1, 1 + 0.6 * k]);
-  const bigWordX = useTransform(p, [0, 1], ["0%", `${-35 * k}%`]);
-  const ringRotate = useTransform(p, [0, 1], [0, 180 * k]);
+  // Layers above move up faster than layers below, so text never overlaps.
+  const badgeY = useTransform(p, [0, 1], [0, -170 * k]);
+  const titleY = useTransform(p, [0, 1], [0, -110 * k]);
+  const subY = useTransform(p, [0, 1], [0, -60 * k]);
+  const ctaY = useTransform(p, [0, 1], [0, -30 * k]);
+  const textOpacity = useTransform(p, [0.45, 0.9], [1, reduce ? 1 : 0]);
+  const photoY = useTransform(p, [0, 1], [0, 90 * k]);
+  const chipFar = useTransform(p, [0, 1], [0, -140 * k]);
+  const chipNear = useTransform(p, [0, 1], [0, -260 * k]);
+  const bigWordX = useTransform(p, [0, 1], ["0%", `${-10 * k}%`]);
+  const ringRotate = useTransform(p, [0, 1], [0, 90 * k]);
   const hintOpacity = useTransform(p, [0, 0.12], [1, 0]);
 
   return (
@@ -72,14 +79,14 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                style={{ y: subY }}
+                style={{ y: badgeY, opacity: textOpacity }}
                 className="mb-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-muted backdrop-blur"
               >
                 <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                 Junior iOS Developer · Apple Developer Academy @ BINUS
               </motion.p>
 
-              <motion.div style={{ y: titleY, scale: titleScale, opacity: titleOpacity }} className="origin-left">
+              <motion.div style={{ y: titleY, opacity: textOpacity }}>
                 <motion.h1
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -98,7 +105,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
-                style={{ y: subY }}
+                style={{ y: subY, opacity: textOpacity }}
                 className="mt-6 max-w-md text-lg text-muted"
               >
                 Building AR, AI and real-time iOS experiences — and coaching
@@ -109,7 +116,7 @@ export default function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.35 }}
-                style={{ y: subY }}
+                style={{ y: ctaY, opacity: textOpacity }}
                 className="mt-8"
               >
                 <Link
@@ -127,14 +134,27 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="relative mx-auto aspect-[4/5] w-full max-w-sm"
             >
+              <div
+                aria-hidden
+                className="absolute inset-0 -z-10 rounded-full bg-accent/25 blur-3xl"
+              />
+              {chips.map((c) => (
+                <motion.div
+                  key={c.label}
+                  style={{ y: c.near ? chipNear : chipFar }}
+                  className={`absolute z-10 ${c.pos}`}
+                >
+                  <motion.span
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 3 + c.delay, repeat: Infinity, ease: "easeInOut", delay: c.delay }}
+                    className="block rounded-full border border-white/15 bg-background/70 px-4 py-2 text-sm font-semibold shadow-lg backdrop-blur"
+                  >
+                    {c.label}
+                  </motion.span>
+                </motion.div>
+              ))}
               <motion.div
-                style={{ y: blobY, scale: blobScale }}
-                className="absolute -inset-16 -z-10"
-              >
-                <Scene3D />
-              </motion.div>
-              <motion.div
-                style={{ y: photoY, rotate: photoRotate }}
+                style={{ y: photoY }}
                 className="relative h-full w-full overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-accent/20"
               >
                 <Image

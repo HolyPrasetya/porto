@@ -55,8 +55,8 @@ export function ParallaxImage({
 /** Giant outlined word behind a section that slides sideways as you scroll. */
 export function GhostText({
   children,
-  from = 12,
-  to = -12,
+  from = 5,
+  to = -5,
   className = "",
 }: {
   children: ReactNode;
@@ -167,12 +167,13 @@ export function ScrollMarquee({
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    reduce ? ["0%", "0%"] : reverse ? ["-30%", "0%"] : ["0%", "-30%"],
+    reduce ? ["0%", "0%"] : reverse ? ["-8%", "0%"] : ["0%", "-8%"],
   );
+  const smooth = useSpring(x as never, { stiffness: 40, damping: 22 });
   const row = [...items, ...items, ...items];
   return (
     <div ref={ref} className="overflow-hidden border-y border-white/10 py-5">
-      <motion.div style={{ x }} className="flex w-max gap-10 whitespace-nowrap">
+      <motion.div style={{ x: smooth }} className="flex w-max gap-10 whitespace-nowrap">
         {row.map((t, i) => (
           <span
             key={i}
