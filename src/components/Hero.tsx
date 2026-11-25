@@ -9,22 +9,13 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ParallaxBackdrop, ScrollMarquee, ScrollProgress } from "./parallax";
+import { ParallaxBackdrop, ScrollProgress } from "./parallax";
 
 const chips = [
   { label: "SwiftUI", pos: "-left-10 top-[12%]", near: true, delay: 0 },
   { label: "ARKit", pos: "-right-8 top-[30%]", near: false, delay: 0.6 },
   { label: "RealityKit", pos: "-left-12 bottom-[22%]", near: false, delay: 1.1 },
   { label: "APICTA Finalist", pos: "-right-10 bottom-[8%]", near: true, delay: 0.3 },
-];
-
-const roles = [
-  "iOS Developer",
-  "SwiftUI",
-  "AR / RealityKit",
-  "Tech Lead",
-  "Taekwondo DAN 3",
-  "APICTA Finalist",
 ];
 
 export default function Hero() {
@@ -46,7 +37,7 @@ export default function Hero() {
   const photoY = useTransform(p, [0, 1], [0, 90 * k]);
   const chipFar = useTransform(p, [0, 1], [0, -140 * k]);
   const chipNear = useTransform(p, [0, 1], [0, -260 * k]);
-  const bigWordX = useTransform(p, [0, 1], ["0%", `${-10 * k}%`]);
+  const bigWordY = useTransform(p, [0, 1], [0, -80 * k]);
   const ringRotate = useTransform(p, [0, 1], [0, 90 * k]);
   const hintOpacity = useTransform(p, [0, 0.12], [1, 0]);
 
@@ -60,7 +51,7 @@ export default function Hero() {
           {/* far layer: giant word */}
           <motion.div
             aria-hidden
-            style={{ x: bigWordX, WebkitTextStroke: "2px rgba(255,255,255,0.08)" }}
+            style={{ y: bigWordY, WebkitTextStroke: "2px rgba(255,255,255,0.08)" }}
             className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 whitespace-nowrap text-[28vw] font-black leading-none tracking-tighter text-transparent"
           >
             HOLY PRASETYA
@@ -183,10 +174,6 @@ export default function Hero() {
         </section>
       </div>
 
-      <div className="pb-20">
-        <ScrollMarquee items={roles} />
-        <ScrollMarquee items={[...roles].reverse()} reverse />
-      </div>
     </>
   );
 }

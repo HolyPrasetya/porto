@@ -70,11 +70,7 @@ export function GhostText({
     target: ref,
     offset: ["start end", "end start"],
   });
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduce ? ["0%", "0%"] : [`${from}%`, `${to}%`],
-  );
+  const y = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [40, -40]);
 
   return (
     <div
@@ -83,7 +79,7 @@ export function GhostText({
       className={`pointer-events-none absolute inset-x-0 top-24 select-none overflow-hidden ${className}`}
     >
       <motion.div
-        style={{ x, WebkitTextStroke: "1.5px rgba(255,255,255,0.07)" }}
+        style={{ y, WebkitTextStroke: "1.5px rgba(255,255,255,0.07)" }}
         className="whitespace-nowrap text-[clamp(6rem,22vw,20rem)] font-black uppercase leading-none tracking-tighter text-transparent"
       >
         {children}
@@ -147,43 +143,5 @@ export function ScrollProgress() {
       style={{ scaleX }}
       className="fixed left-0 right-0 top-0 z-[60] h-[3px] origin-left bg-gradient-to-r from-accent via-sky-300 to-fuchsia-400"
     />
-  );
-}
-
-/** Horizontal strip of words that scrolls sideways with the page (opposite directions per row). */
-export function ScrollMarquee({
-  items,
-  reverse = false,
-}: {
-  items: string[];
-  reverse?: boolean;
-}) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduce ? ["0%", "0%"] : reverse ? ["-8%", "0%"] : ["0%", "-8%"],
-  );
-  const smooth = useSpring(x as never, { stiffness: 40, damping: 22 });
-  const row = [...items, ...items, ...items];
-  return (
-    <div ref={ref} className="overflow-hidden border-y border-white/10 py-5">
-      <motion.div style={{ x: smooth }} className="flex w-max gap-10 whitespace-nowrap">
-        {row.map((t, i) => (
-          <span
-            key={i}
-            className="flex items-center gap-10 text-3xl font-extrabold uppercase tracking-tight text-white/80 sm:text-5xl"
-          >
-            {t}
-            <span className="text-accent">✦</span>
-          </span>
-        ))}
-      </motion.div>
-    </div>
   );
 }
